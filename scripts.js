@@ -8,6 +8,9 @@ function buildGrid() {
         for (j = 0; j < 16; j++) {
             const cell = document.createElement('div');
             cell.className = "cell";
+            cell.addEventListener('mouseover', () => {
+                cell.classList.add("filled");
+            });
             row.appendChild(cell);
         }
     }

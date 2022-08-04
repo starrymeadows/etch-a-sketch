@@ -9,3 +9,7 @@
     width: 10px;
     border: 0.5px solid black;
 }
+
+.filled {
+    background-color: black;
+}
