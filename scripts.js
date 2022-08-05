@@ -3,6 +3,8 @@ const resizeBtn = document.querySelector('.resize');
 resizeBtn.addEventListener('click', resizeGrid);
 const resetBtn = document.querySelector('.reset');
 resetBtn.addEventListener('click', resetGrid);
+const toggleBtn = document.querySelector('.toggle');
+toggleBtn.addEventListener('click', toggleBorder);
 
 let gridSize = 25;
 
@@ -54,4 +56,15 @@ function resizeGrid() {
         }
         buildGrid();
     }
+}
+
+function toggleBorder() {
+    const toggle = document.querySelectorAll(".cell");
+    toggle.forEach((cell) => {
+        if (cell.classList.contains("no-border")) {
+            cell.classList.remove("no-border");
+        } else {
+            cell.classList.add("no-border");
+        }
+    });
 }

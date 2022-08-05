@@ -10,15 +10,32 @@
     <link rel="stylesheet" href="reset.css">
 </head>
 <body>
-    <div class ="controls-top">
-        <button class="resize">Resize</button>
-        <button class="reset">Reset</button>
+    <div class="options">
+        <div class ="controls-top">
+            <button class="resize">Resize</button>
+            <button class="reset">Reset</button>
+        </div>
+
+        <div class="controls-bottom">
+            <button class="toggle">Toggle Borders</button>
+            <div class="selection">
+                <div><input type="radio" name="color" id="classic" value="classic" checked>
+                    <label for="classic">Classic</label>
+                </input></div>
+                <div><input type="radio" name="color" id="pencil" value="pencil">
+                    <label for="pencil">Pencil</label>
+                </input></div>
+                <div><input type="radio" name="color" id="random" value="random">
+                    <label for="random">Random</label>
+                </input></div>
+            </div>
+        </div>
     </div>
     
     <div class="container"></div>
-    <script src="scripts.js"></script>
 
-    <div class="options">
-    </div>
+
+
+<script src="scripts.js"></script>
 </body>
 </html>

@@ -1,11 +1,25 @@
 body {
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.controls-top {
+.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls-top,
+.controls-bottom {
     margin: 5px;
+}
+
+.selection {
+    display: flex;
+    flex-direction: column;
 }
 
 button {
@@ -24,6 +38,7 @@ button:hover {
 .container {
     max-width: 500px;
     max-height: 500px;
+    border: 0.1px solid black;
 }
 
 .row {
@@ -41,4 +56,8 @@ button:hover {
 
 .filled {
     background-color: black;
+}
+
+.no-border {
+    border: none;
 }
