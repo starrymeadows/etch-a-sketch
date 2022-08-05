@@ -6,6 +6,14 @@ resetBtn.addEventListener('click', resetGrid);
 const toggleBtn = document.querySelector('.toggle');
 toggleBtn.addEventListener('click', toggleBorder);
 
+const classicBtn = document.getElementById('classic');
+classicBtn.addEventListener('click', () => fillType = "classic");
+const pencilBtn = document.getElementById('pencil');
+pencilBtn.addEventListener('click', () => fillType = "pencil");
+const randomBtn = document.getElementById('random');
+randomBtn.addEventListener('click', () => fillType = "random");
+
+let fillType = "classic";
 let gridSize = 25;
 
 function buildGrid() {
@@ -17,7 +25,12 @@ function buildGrid() {
             const cell = document.createElement('div');
             cell.className = "cell";
             cell.addEventListener('mouseover', () => {
-                cell.classList.add("filled");
+                cell.classList.add(fillType);
+                switch (fillType) {
+                    case "random":
+                        let randomColor = Math.floor(Math.random()*16777215).toString(16);
+                        cell.style.backgroundColor = `#${randomColor}`;
+                }
             });
             row.appendChild(cell);
         }
@@ -25,12 +38,23 @@ function buildGrid() {
     resizeCells(gridSize);
 }
 
+// switch case for fillType: classic, pencil, random
+function fill(type) {
+    switch (type) {
+        case "pencil":
+            fillType = "pencil";
+        
+        default:
+            fillType = "classic";
+    }
+}
 
 buildGrid();
 
 // determine cell size
 function resizeCells(gridSize) {
-    cellSize = (500 / gridSize).toFixed(1) + `px`;
+    const BOARD_SIZE = 500;
+    cellSize = (BOARD_SIZE / gridSize).toFixed(1) + `px`;
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.style.height = cellSize;
@@ -61,10 +85,6 @@ function resizeGrid() {
 function toggleBorder() {
     const toggle = document.querySelectorAll(".cell");
     toggle.forEach((cell) => {
-        if (cell.classList.contains("no-border")) {
-            cell.classList.remove("no-border");
-        } else {
-            cell.classList.add("no-border");
-        }
+        cell.classList.toggle("no-border");
     });
 }

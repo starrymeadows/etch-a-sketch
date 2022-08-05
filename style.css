@@ -54,8 +54,12 @@ button:hover {
     border: 0.1px solid black;
 }
 
-.filled {
+.classic {
     background-color: black;
+}
+
+.rainbow {
+    background-color: red;
 }
 
 .no-border {
