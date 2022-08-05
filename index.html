@@ -12,7 +12,10 @@
 <body>
     <div class="options">
         <div class ="controls-top">
-            <button class="resize">Resize</button>
+            <input type="range" id="resize" name="resize"
+                min="0" max="100" value="25">
+                <label for="resize">Resize</label>
+                </input>
             <button class="reset">Reset</button>
         </div>
 
@@ -22,11 +25,8 @@
                 <div><input type="radio" name="color" id="classic" value="classic" checked>
                     <label for="classic">Classic</label>
                 </input></div>
-                <div><input type="radio" name="color" id="pencil" value="pencil">
-                    <label for="pencil">Pencil</label>
-                </input></div>
                 <div><input type="radio" name="color" id="random" value="random">
-                    <label for="random">Random</label>
+                    <label for="random">Rainbow</label>
                 </input></div>
             </div>
         </div>

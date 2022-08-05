@@ -1,19 +1,18 @@
 const container = document.querySelector('.container');
-const resizeBtn = document.querySelector('.resize');
-resizeBtn.addEventListener('click', resizeGrid);
+const resizeBtn = document.querySelector('#resize');
+resizeBtn.addEventListener('onchange', resizeGrid);
 const resetBtn = document.querySelector('.reset');
 resetBtn.addEventListener('click', resetGrid);
 const toggleBtn = document.querySelector('.toggle');
 toggleBtn.addEventListener('click', toggleBorder);
 
 const classicBtn = document.getElementById('classic');
-classicBtn.addEventListener('click', () => fillType = "classic");
-const pencilBtn = document.getElementById('pencil');
-pencilBtn.addEventListener('click', () => fillType = "pencil");
+classicBtn.addEventListener('click', makeBlack);
 const randomBtn = document.getElementById('random');
-randomBtn.addEventListener('click', () => fillType = "random");
+randomBtn.addEventListener('click', makeRandom);
 
-let fillType = "classic";
+let fillColor = "black";
+let fillType = "classic"
 let gridSize = 25;
 
 function buildGrid() {
@@ -24,29 +23,42 @@ function buildGrid() {
         for (j = 0; j < gridSize; j++) {
             const cell = document.createElement('div');
             cell.className = "cell";
-            cell.addEventListener('mouseover', () => {
-                cell.classList.add(fillType);
-                switch (fillType) {
-                    case "random":
-                        let randomColor = Math.floor(Math.random()*16777215).toString(16);
-                        cell.style.backgroundColor = `#${randomColor}`;
-                }
-            });
+            cell.addEventListener('mouseover', fillCell);
             row.appendChild(cell);
         }
     }
     resizeCells(gridSize);
 }
 
-// switch case for fillType: classic, pencil, random
-function fill(type) {
-    switch (type) {
-        case "pencil":
-            fillType = "pencil";
-        
-        default:
-            fillType = "classic";
+function fillCell(e) {
+    e.target.classList.add('filled');
+    if (fillType == "random") {
+        addColor();
     }
+    e.target.style.backgroundColor = fillColor;
+}
+// switch case for fillType: classic, pencil, random
+function makeRandom(e) {
+    fillType = "random";
+    const filled = document.querySelectorAll(".filled");
+    filled.forEach(cell => {
+        addColor();
+        cell.style.backgroundColor = fillColor;
+    });
+}
+
+function addColor() {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    fillColor = `#${randomColor}`;
+}
+
+function makeBlack(e) {
+    fillColor = "black";
+    fillType = "classic";
+    const filled = document.querySelectorAll(".filled");
+    filled.forEach(cell => {
+        cell.style.backgroundColor = fillColor;
+    });
 }
 
 buildGrid();
@@ -66,6 +78,7 @@ function resetGrid() {
     const cells = document.querySelectorAll('.filled');
     cells.forEach((cell) => {
         cell.classList.remove('filled');
+        cell.style.backgroundColor = 'white';
     });
 }
 
