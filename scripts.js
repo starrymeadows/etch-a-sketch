@@ -46,7 +46,7 @@ function resetGrid() {
 function resizeGrid() {
     let input = prompt("Enter grid size (1-100)", "16");
     if (input < 1 || input > 100) {
-        input = prompt("Please enter a size between 1 and 100", "16");
+        alert("Error: only numbers between 1 and 100 are valid.");
     } else if (input !== null || input !== "") {
         gridSize = parseInt(input);
         while (container.firstChild) {

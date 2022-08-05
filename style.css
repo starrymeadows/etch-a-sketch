@@ -1,8 +1,26 @@
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
+.controls-top {
+    margin: 5px;
+}
+
+button {
+    border: 1px solid white;
+    padding: 5px 15px;
+    transition-duration: 0.2s;
+}
+
+button:hover {
+    border: 1px solid gray;
+    background-color: white;
+    color: black;
+}
+
+/* etch-a-sketch */
 .container {
     max-width: 500px;
     max-height: 500px;
