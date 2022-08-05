@@ -1,4 +1,8 @@
 const container = document.querySelector('.container');
+const resizeBtn = document.querySelector('.resize');
+resizeBtn.addEventListener('click', resizeGrid);
+const resetBtn = document.querySelector('.reset');
+resetBtn.addEventListener('click', resetGrid);
 
 let gridSize = 25;
 
@@ -16,19 +20,38 @@ function buildGrid() {
             row.appendChild(cell);
         }
     }
+    resizeCells(gridSize);
 }
 
+
 buildGrid();
-resizeCells(gridSize);
-console.log(cellSize);
 
 // determine cell size
 function resizeCells(gridSize) {
     cellSize = (500 / gridSize).toFixed(1) + `px`;
-
     const cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.style.height = cellSize;
         cell.style.width = cellSize;
     });
+}
+
+function resetGrid() {
+    const cells = document.querySelectorAll('.filled');
+    cells.forEach((cell) => {
+        cell.classList.remove('filled');
+    });
+}
+
+function resizeGrid() {
+    let input = prompt("Enter grid size (1-100)", "16");
+    if (input < 1 || input > 100) {
+        input = prompt("Please enter a size between 1 and 100", "16");
+    } else if (input !== null || input !== "") {
+        gridSize = parseInt(input);
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+        }
+        buildGrid();
+    }
 }
