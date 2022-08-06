@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
-const resizeBtn = document.querySelector('#resize');
-resizeBtn.addEventListener('onchange', resizeGrid);
+const resizeBtn = document.querySelector('.resize');
+resizeBtn.addEventListener('change', resizeGrid);
+resizeBtn.addEventListener('mousemove', () => updateGridText());
 const resetBtn = document.querySelector('.reset');
 resetBtn.addEventListener('click', resetGrid);
 const toggleBtn = document.querySelector('.toggle');
@@ -13,7 +14,7 @@ randomBtn.addEventListener('click', makeRandom);
 
 let fillColor = "black";
 let fillType = "classic"
-let gridSize = 25;
+let gridSize = resizeBtn.value;
 
 function buildGrid() {
     for (i = 0; i < gridSize; i++) {
@@ -28,6 +29,7 @@ function buildGrid() {
         }
     }
     resizeCells(gridSize);
+    updateGridText();
 }
 
 function fillCell(e) {
@@ -37,7 +39,7 @@ function fillCell(e) {
     }
     e.target.style.backgroundColor = fillColor;
 }
-// switch case for fillType: classic, pencil, random
+
 function makeRandom(e) {
     fillType = "random";
     const filled = document.querySelectorAll(".filled");
@@ -83,16 +85,17 @@ function resetGrid() {
 }
 
 function resizeGrid() {
-    let input = prompt("Enter grid size (1-100)", "16");
-    if (input < 1 || input > 100) {
-        alert("Error: only numbers between 1 and 100 are valid.");
-    } else if (input !== null || input !== "") {
-        gridSize = parseInt(input);
+    let input = resizeBtn.value;
+    gridSize = parseInt(input);
         while (container.firstChild) {
             container.removeChild(container.lastChild);
         }
         buildGrid();
-    }
+}
+
+function updateGridText () {
+    const sizeText = document.querySelector(".size");
+    sizeText.textContent = `${resizeBtn.value} x ${resizeBtn.value}`;
 }
 
 function toggleBorder() {

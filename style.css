@@ -17,6 +17,11 @@ body {
     margin: 5px;
 }
 
+.size-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .selection {
     display: flex;
     flex-direction: column;
@@ -36,8 +41,8 @@ button:hover {
 
 /* etch-a-sketch */
 .container {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 502px;
+    max-height: 502px;
     border: 0.1px solid black;
 }
 

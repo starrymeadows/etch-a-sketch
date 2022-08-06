@@ -12,10 +12,12 @@
 <body>
     <div class="options">
         <div class ="controls-top">
-            <input type="range" id="resize" name="resize"
-                min="0" max="100" value="25">
-                <label for="resize">Resize</label>
+            <div class="size-container">
+                <input type="range" id="resize" name="resize" class="resize"
+                        min ="1" max="75" value="25" step="1">
                 </input>
+                <label for="resize">Grid Size: <span class="size">25 x 25</span></label>
+            </div>
             <button class="reset">Reset</button>
         </div>
 
