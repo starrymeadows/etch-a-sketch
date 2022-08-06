@@ -6,25 +6,24 @@ body {
 }
 
 .options {
+    padding-right: 15px;
+}
+
+.title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.options,
+.controls-top,
+.size-container,
+.selection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.controls-top,
-.controls-bottom {
     margin: 5px;
-}
-
-.size-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.selection {
-    display: flex;
-    flex-direction: column;
 }
 
 button {
@@ -61,10 +60,6 @@ button:hover {
 
 .filled {
     background-color: black;
-}
-
-.rainbow {
-    background-color: red;
 }
 
 .no-border {
