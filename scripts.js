@@ -40,7 +40,7 @@ function fillCell(e) {
     e.target.style.backgroundColor = fillColor;
 }
 
-function makeRandom(e) {
+function makeRandom() {
     fillType = "random";
     const filled = document.querySelectorAll(".filled");
     filled.forEach(cell => {
@@ -54,7 +54,7 @@ function addColor() {
     fillColor = `#${randomColor}`;
 }
 
-function makeBlack(e) {
+function makeBlack() {
     fillColor = "black";
     fillType = "classic";
     const filled = document.querySelectorAll(".filled");
